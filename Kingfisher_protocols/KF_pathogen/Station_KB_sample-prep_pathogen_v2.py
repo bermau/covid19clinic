@@ -306,7 +306,7 @@ def run(ctx: protocol_api.ProtocolContext):
     }
 
     # Divide destination wells in small groups for P300 pipette
-    #destinations = list(divide_destinations(sample_plate.wells()[:NUM_SAMPLES], size_transfer))
+    # destinations = list(divide_destinations(sample_plate.wells()[:NUM_SAMPLES], size_transfer))
     Beads.reagent_reservoir = reagent_res.rows(
     )[0][:Beads.num_wells]  # 1 row, 4 columns (first ones)
     work_destinations = sample_plate.wells()[:NUM_SAMPLES]

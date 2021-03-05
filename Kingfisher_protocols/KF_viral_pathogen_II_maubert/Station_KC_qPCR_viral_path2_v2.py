@@ -168,7 +168,7 @@ def run(ctx: protocol_api.ProtocolContext):
         if blow_out == True:
             pipet.blow_out(location.top(z=-2))  # Blow out
 
-    def calc_height(reagent, cross_section_area, aspirate_volume, min_height = 0.5):
+    def calc_height(reagent: object, cross_section_area: object, aspirate_volume: object, min_height: object = 0.5) -> object:
         nonlocal ctx
         ctx.comment('Remaining volume ' + str(reagent.vol_well) +
                     '< needed volume ' + str(aspirate_volume) + '?')

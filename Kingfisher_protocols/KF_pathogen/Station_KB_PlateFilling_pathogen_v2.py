@@ -31,7 +31,7 @@ air_gap_vol = 15
 air_gap_vol_elutionbuffer = 5
 run_id = $run_id
 
-x_offset = [0,0]
+x_offset = [0, 0]
 multi_well_rack_area = 8.2 * 71.2  # Cross section of the 12 well reservoir
 num_cols = math.ceil(NUM_SAMPLES / 8)  # Columns we are working on
 
@@ -157,15 +157,24 @@ def run(ctx: protocol_api.ProtocolContext):
         '''
         if mix_height == 0:
             mix_height = 3
+
         pipet.aspirate(1, location=location.bottom(
             z=source_height).move(Point(x=x_offset[0])), rate=reagent.flow_rate_aspirate)
+
         for _ in range(rounds):
-            pipet.aspirate(vol, location=location.bottom(
-                z=source_height).move(Point(x=x_offset[0])), rate=reagent.flow_rate_aspirate)
-            pipet.dispense(vol, location=location.bottom(
-                z=mix_height).move(Point(x=x_offset[1])), rate=reagent.flow_rate_dispense)
-        pipet.dispense(1, location=location.bottom(
-            z=mix_height).move(Point(x=x_offset[1])), rate=reagent.flow_rate_dispense)
+            pipet.aspirate(vol,
+                           location=location.bottom(source_height).move(Point(x=x_offset[0])),
+                           rate=reagent.flow_rate_aspirate
+                           )
+
+            pipet.dispense(vol,
+                           location=location.bottom(z=mix_height).move(Point(x=x_offset[1])),
+                           rate=reagent.flow_rate_dispense)
+
+        pipet.dispense(1,
+                       location=location.bottom(z=mix_height).move(Point(x=x_offset[1])),
+                       rate=reagent.flow_rate_dispense)
+
         if blow_out == True:
             pipet.blow_out(location.top(z=-2))  # Blow out
 
@@ -307,7 +316,6 @@ def run(ctx: protocol_api.ProtocolContext):
 
         wash_buffer_vol = [150, 150]
         rinse = False  # Only first time
-
         ########
         # Wash buffer dispense
         for i in range(num_cols):
@@ -315,7 +323,7 @@ def run(ctx: protocol_api.ProtocolContext):
                 pick_up(m300)
             for j, transfer_vol in enumerate(wash_buffer_vol):
                 if (i == 0 and j == 0):
-                    rinse = True #Rinse only first transfer
+                    rinse = True # Rinse only first transfer
                 else:
                     rinse = False
                 move_vol_multichannel(m300, reagent = WashBuffer1, source = WashBuffer1.reagent_reservoir,
@@ -343,7 +351,6 @@ def run(ctx: protocol_api.ProtocolContext):
 
         wash_buffer_vol = [150, 150]
         rinse = False  # Only first time
-
         ########
         # Wash buffer dispense
         for i in range(num_cols):

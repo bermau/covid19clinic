@@ -24,7 +24,7 @@ metadata = {
 
 #Defined variables
 ##################
-NUM_SAMPLES = $num_samples #last sample (PC), has been removed (done manually)
+NUM_SAMPLES = $num_samples # last sample (PC), has been removed (done manually)
 run_id=$run_id
 air_gap_vol = 15
 air_gap_vol_elutionbuffer = 5
@@ -154,8 +154,10 @@ def run(ctx: protocol_api.ProtocolContext):
         '''
         if mix_height == 0:
             mix_height = 3
+
         pipet.aspirate(1, location=location.bottom(
             z=source_height).move(Point(x=x_offset[0])), rate=reagent.flow_rate_aspirate)
+
         for _ in range(rounds):
             pipet.aspirate(vol, location=location.bottom(
                 z=source_height).move(Point(x=x_offset[0])), rate=reagent.flow_rate_aspirate)
