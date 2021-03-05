@@ -1,4 +1,6 @@
 __pycache__/
+# BMA :
+.ipynb_checkpoints
 # *.py[cod]
 # *$py.class
 # C extensions
