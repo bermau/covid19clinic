@@ -1,0 +1,27 @@
+#
+
+La fonction calc_height() est très peu utilisée/
+j'ai trouvé quelques exemples :
+
+covid19clinic/automation/KF_config/Station_KB_PlateFilling_pathogen_tec.py
+covid19clinic/Kingfisher_protocols/KF_viral_pathogen_II_maubert/Station_KB_PlateFilling_viral_path2_v1.py
+covid19clinic/Kingfisher_protocols/KF_viral_pathogen_II_maubert/Station_KB_sample_prep_viral_path2_v1.py
+covid19clinic/Kingfisher_protocols/KF_viral_pathogen_II_maubert/Station_KC_qPCR_viral_path2_v2.py
+
+covid19clinic/Kingfisher_protocols/KF_pathogen/Station_KB_PlateFilling_pathogen_v2.py : Remplissage des plaques. Pour une
+raison inconnue, remplie 2 fois plus de DeepWell que prévus. Pour remplir 450 µl, utilise une m300 en remplissant 3 fois
+150 µml.
+
+covid19clinic/Kingfisher_protocols/KF_pathogen/Station_KB_sample-prep_pathogen_v2.py : +++ (adapté) : remplit les 260
+binding solution avec une m300 en 2 fois 130.
+
+# Explication par BMA : ajoute 5 microlitre s de phage MS2 dans cahque puits.
+# puis remu les billes
+# puis ajoute 260 de billes.
+# le nom du programme me parraît inadéquat.
+
+covid19clinic/automation/KFVP_config/Station_KB_PlateFilling_viral_path2_v1.py : quelle diff avec la version de
+Kingfisher_protocols/KF_pathogen ? Contrairement à ce que je pensais, le script dans automatie/KFVP_config est plus
+récent.
+
+
